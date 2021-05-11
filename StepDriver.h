@@ -19,13 +19,15 @@
 class StepDriver
 {
 public:
-    StepDriver(byte pinEnb, byte pinStep, byte pinDir);
+    StepDriver(byte pinStep, byte pinDir, byte pinEnb);
     void moveTo(double distance);
     void stepByStep();
 
     void setVel(int motorVel);
     void setStepMM(unsigned int steps);
     void setAccel(float accel);
+
+    void parameterStatus();
 
 private:
     //tipo STRING
@@ -38,9 +40,14 @@ private:
     //tipo INT
     int _motorvel;
     unsigned int _steps;
+    unsigned int _stepsTotal;
 
     //tipo FLOAT
     double _distance;
+    double _currentDistance = 0;
     float _accel;
+
+    //tipo BOOL
+    bool direction;
 };
 #endif
